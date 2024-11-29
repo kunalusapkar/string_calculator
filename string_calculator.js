@@ -1,4 +1,4 @@
-const numberString = "";
+const numberString = "1,2,2,4,3";
 
 function stringCalculator(numberData) {
   function findSum(data) {
@@ -9,7 +9,8 @@ function stringCalculator(numberData) {
     return sum;
   }
   let sum = 0;
-  const strToArray = numberData.split(",").map(Number);
+  var cleanString = numberData.replace(/[\n;,/]/g, "")
+  const strToArray = cleanString.split("") .map(Number);
   sum = findSum(strToArray);
   return sum;
 }
