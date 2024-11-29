@@ -1,10 +1,10 @@
-const numberString = "1,5,12,76,2,4";
+const numberString = "";
 
 function stringCalculator(numberData) {
   function findSum(data) {
     const sum = data.reduce((acc, value) => {
-        if(value < 0) return "Number is negative";
-        return acc + value
+      if (value < 0) throw new Error("Number is negative");
+      return acc + value;
     });
     return sum;
   }
@@ -15,3 +15,5 @@ function stringCalculator(numberData) {
 }
 
 console.log(stringCalculator(numberString));
+
+module.exports = stringCalculator;
