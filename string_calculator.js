@@ -1,4 +1,4 @@
-const numberString = "//;\n1;2";
+const numberString = "1,2,2";
 
 function stringCalculator(numberData) {
   function findSum(data) {
