@@ -17,9 +17,12 @@ test("Test New Line",()=>{
     expect(stringCalculator("1\n2,3\n4")).toBe(10)
 })
 
-test("Test Negative Number",()=>{
-    expect(stringCalculator("-4,6,7")).toBe("Negative numbers not allowed:-4")
-})
+test("Test Negative Number", () => {
+    const t = () => {
+        stringCalculator("-4,-2,6,7");
+    };
+    expect(t).toThrow("Negative numbers not allowed:-4,-2");
+  });
 
 test("Test Other Delimiter",()=>{
     expect(stringCalculator("//;\n1;2")).toBe(3)

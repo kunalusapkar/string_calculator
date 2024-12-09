@@ -3,8 +3,7 @@ const numberString = "1,2,2";
 function stringCalculator(numberData) {
   if (numberData === "") return 0;
   const numbers = parseNumber(numberData);
-  const negativeNumber = findNegative(numbers)
-  if(negativeNumber) return negativeNumber
+  checkNegativeAndThrow(numbers)  
   return findSum(numbers);
 }
 
@@ -14,10 +13,10 @@ function parseNumber(numberData) {
   return numbers;
 }
 
-function findNegative(data){
-  const foundNegative = data.find((element) => element < 0);
-  if (typeof foundNegative !== "undefined")
-    return `Negative numbers not allowed:${foundNegative}`;
+function checkNegativeAndThrow(data){
+  const foundNegative = data.filter((element) => element < 0);
+  if (foundNegative.length > 0)
+   throw new Error(`Negative numbers not allowed:${foundNegative}`);
 }
 
 function findSum(data) {
