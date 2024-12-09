@@ -1,26 +1,30 @@
 const numberString = "1,2,2";
 
 function stringCalculator(numberData) {
-  function findSum(data) {
-    if (data.length === 0) return 0;
-    const foundNegative = data.find((element) => element < 0);
-    // console.log("ssqs22",foundNegative)
-    if (typeof foundNegative !== "undefined")
-      return `Negative numbers not allowed:${foundNegative}`;
-    const sum = data.reduce((acc, value) => {
-      return acc + value;
-    });
-    return sum;
-  }
-  let sum = 0;
-
-  var cleanString = numberData.replace(/[\n;,/]/g, " ");
-
-  const strToArray = cleanString.split(" ").map(Number);
-  sum = findSum(strToArray);
-  return sum;
+  if (numberData === "") return 0;
+  const numbers = parseNumber(numberData);
+  const negativeNumber = findNegative(numbers)
+  if(negativeNumber) return negativeNumber
+  return findSum(numbers);
 }
 
-console.log(stringCalculator(numberString));
+function parseNumber(numberData) {
+  var cleanString = numberData.replace(/[\n;,/]/g, " ");
+  const numbers = cleanString.split(" ").map(Number);
+  return numbers;
+}
+
+function findNegative(data){
+  const foundNegative = data.find((element) => element < 0);
+  if (typeof foundNegative !== "undefined")
+    return `Negative numbers not allowed:${foundNegative}`;
+}
+
+function findSum(data) {
+  const sum = data.reduce((acc, value) => {
+    return acc + value;
+  });
+  return sum;
+}
 
 module.exports = stringCalculator;
